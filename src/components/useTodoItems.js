@@ -1,8 +1,7 @@
 import React from "react";
 import { items } from "../stitch";
-import { watchItems } from "../stitch/mongodb"
 
-const todoReducer = (state, { type, payload }) => {
+const userReducer = (state, { type, payload }) => {
   switch (type) {
     case "setTodos": {
       return {
@@ -82,36 +81,16 @@ const todoReducer = (state, { type, payload }) => {
 
 export function useTodoItems(userId) {
   //
-  const [state, dispatch] = React.useReducer(todoReducer, { todos: [] });
+  const [state, dispatch] = React.useReducer(userReducer, { todos: [] });
   // Todo Actions
-  const loadTodos = async () => { 
-    const todos = await items.find({}, { limit: 1000 }).asArray();
+  const loadUser = async () => { 
+    const user = await user.aggregate([
+      {$match: {}},
+      {$project: {"alerts":1, "_id":0}},
+    ]);
+    console.log('**********', todos)
     dispatch({ type: "setTodos", payload: { todos } });
   };
-
-  const useWatchItems = () => { 
-    const [getStream, closeStream] = watchItems(); 
-    React.useEffect(() => {
-      getStream().then(stream => stream.onNext( (changeEvent) => {
-        switch(changeEvent.operationType) {
-          case "insert": {
-            dispatch({ type: "addTodo", payload: changeEvent.fullDocument}); 
-            break; 
-          }
-          case "delete": { 
-            dispatch({ type: "removeTodo", payload: changeEvent.documentKey._id}); 
-            break; 
-          }
-          case "update": {
-            dispatch({ type: "updateTodo", payload: changeEvent.fullDocument});
-            break; 
-          }
-          default: {}
-        }
-      } )); 
-     return closeStream; 
-    }, [])
-  }; 
 
   const addTodo = async task => {
     const todo = { task, owner_id: userId };
@@ -145,7 +124,6 @@ export function useTodoItems(userId) {
   React.useEffect(() => {
     loadTodos(); 
   }, []);
-  useWatchItems(); 
   return {
     items: state.todos,
     hasHadTodos: state.hasHadTodos,  

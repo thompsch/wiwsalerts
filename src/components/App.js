@@ -2,10 +2,12 @@
 import React from "react";
 import styled from "@emotion/styled";
 // Components & Hooks
-import TodoApp from "./TodoApp";
+import AlertApp from "./AlertApp";
 import Login from "./Login";
 import { StitchAuthProvider, useStitchAuth } from "./StitchAuth";
 import { Button } from "reactstrap";
+import { appSettingsCollection } from "../stitch";
+
 
 App.propTypes = {};
 export default function App() {
@@ -22,13 +24,15 @@ function AppUI() {
     isLoggedIn,
     actions: { handleLogout },
   } = useStitchAuth();
+
+ 
   return (
     <Layout>
       <Navbar>
         {isLoggedIn && <Button onClick={handleLogout}>Logout</Button>}
-        <AppTitle>MongoDB Stitch To-Do Tutorial</AppTitle>
+        <AppTitle>WIWS SMS Alert System</AppTitle>
       </Navbar>
-      {isLoggedIn ? <TodoApp /> : <Login />}
+      {isLoggedIn ? <AlertApp /> : <Login />}
     </Layout>
   );
 }

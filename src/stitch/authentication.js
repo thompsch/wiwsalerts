@@ -27,10 +27,11 @@ export async function loginGoogle() {
 }
 
 export function handleOAuthRedirects() {
+  console.log('has redirect?', app.auth.hasRedirectResult())
   if (app.auth.hasRedirectResult()) {
     return app.auth.handleRedirectResult();
   }
-};
+}
 
 export function hasLoggedInUser() {
   // Check if there is currently a logged in user

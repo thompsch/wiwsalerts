@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "@emotion/styled";
 import ErrorBoundary from "react-error-boundary";
-import TodoItem from "./TodoItem";
+import Alert from "./Alert";
 
 TodoList.propTypes = {
   items: PropTypes.array,
@@ -14,10 +14,9 @@ export default function TodoList(props) {
   return (
     <ErrorBoundary>
       <List>
-        {items.length === 0 && <NoTodoItems hasHadTodos={hasHadTodos} />}
         {items.map(item => (
-          <TodoItem
-            key={item._id.toString()}
+          <Alert
+            key={item}
             item={item}
             toggleStatus={() => actions.toggleTodoStatus(item._id)}
           />
