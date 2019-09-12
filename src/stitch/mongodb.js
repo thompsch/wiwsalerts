@@ -1,13 +1,13 @@
 import { RemoteMongoClient } from "mongodb-stitch-browser-sdk";
 import { app } from "./app";
 
-// TODO: Initialize a MongoDB Service Client
 const mongoClient = app.getServiceClient(
   RemoteMongoClient.factory,
-  "mongodb-atlas"
+  "atlas"
 );
 
-// TODO: Instantiate a collection handle for todo.items
-const items = mongoClient.db("todo").collection("items");
+const userCollection = mongoClient.db("alerts").collection("users");
+const appSettingsCollection = mongoClient.db("alerts").collection("appSettings");
 
-export { items };
+export { userCollection, appSettingsCollection };
+
