@@ -4,22 +4,22 @@ import styled from "@emotion/styled";
 import ErrorBoundary from "react-error-boundary";
 // To-Do Components & Hooks
 import User from "./User";
+import NewUser from "./NewUser";
 import { useStitchAuth } from "./StitchAuth";
 import { Card, CardTitle } from "reactstrap";
-import { useUser } from "./userReducer";
+import { getUser, getSettings } from "./dataReducer";
 
 AlertApp.propTypes = {};
 
-export default function AlertApp(props) { 
-  const { currentUser } = useStitchAuth();
-
-  const {user} = useUser(currentUser.id);
-
-  console.log('alertapp', currentUser, user)
-
-
- //console.log(appSettings)
+export default function AlertApp() { 
+  const currentUser = useStitchAuth().currentUser;
+  const {user} = getUser(currentUser.id);
+  const {appSettings} = getSettings();
   
+  let bucket = {user, appSettings};
+  console.log('alertapp BUCKET', bucket)
+  let newUser = (bucket.user._id != undefined)
+
       return (
         <ErrorBoundary>
           <Layout>
@@ -27,7 +27,7 @@ export default function AlertApp(props) {
               <Title>
                 <h1>Your WIWS Alert settings</h1>
               </Title>
-              <User {... user} />
+              {newUser ?  <NewUser {... bucket} /> : <User {... bucket} /> }
             </UserCard>
           </Layout>
         </ErrorBoundary>

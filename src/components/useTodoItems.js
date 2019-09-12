@@ -1,7 +1,7 @@
 import React from "react";
 import { items } from "../stitch";
 
-const userReducer = (state, { type, payload }) => {
+const dataReducer = (state, { type, payload }) => {
   switch (type) {
     case "setTodos": {
       return {
@@ -81,7 +81,7 @@ const userReducer = (state, { type, payload }) => {
 
 export function useTodoItems(userId) {
   //
-  const [state, dispatch] = React.useReducer(userReducer, { todos: [] });
+  const [state, dispatch] = React.useReducer(dataReducer, { todos: [] });
   // Todo Actions
   const loadUser = async () => { 
     const user = await user.aggregate([

@@ -7,13 +7,14 @@ User.propTypes = {
 };
 
 export default function User(props) {
+  console.log('start User')
   console.log('props', props)
   if (props == undefined) return( <Layout>
     <h1>loading...</h1>
     <h2></h2>
 </Layout>);
   
-  const { user } = props;
+  const { user } = props.user;
 
   console.log('!!', user)
   if (user != undefined) {
@@ -23,12 +24,15 @@ export default function User(props) {
 
     return (
       <Layout>
-        <h1>{user.name}</h1>
+        <h2>{user.name}</h2>
+        <h3>{user.email}</h3>
         <p>
         Phone for text messages: {user.phone}
         <br/>
         Child(ren):
-        <ul>{children}</ul></p>
+        <ul>{children}</ul>
+        </p>
+
         I would like to receive text messages for:
       
     </Layout>)

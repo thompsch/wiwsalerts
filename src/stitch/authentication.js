@@ -27,7 +27,6 @@ export async function loginGoogle() {
 }
 
 export function handleOAuthRedirects() {
-  console.log('has redirect?', app.auth.hasRedirectResult())
   if (app.auth.hasRedirectResult()) {
     return app.auth.handleRedirectResult();
   }
