@@ -5,22 +5,30 @@ import { CheckedIcon, UncheckedIcon } from "./Icon";
 import { Card, CardBody } from "reactstrap";
 
 AlertItem.propTypes = {
-  item: PropTypes.object
+  item: PropTypes.object,
+  updater: PropTypes.func
 };
 
 export default function AlertItem(props) {
-  const { item } = props;
-  const [checked, setChecked] = React.useState(item.subscribed)
+  const { item, updater } = props;
+  console.log("UPDATESETTINGS2", updater)
+  const [checked, setChecked] = React.useState(item.subscribed);
 
   const Checkbox = checked ? CheckedIcon : UncheckedIcon;
   return (
-    <Alert onClick={()=>setChecked(!checked)}>
+    <Alert onClick={()=>setState(item)}>
       <Layout>
         <Checkbox />
         <Text>{item.type}</Text>
       </Layout>
     </Alert>
   );
+
+  function setState(item) {
+   item.subscribed = !item.subscribed;
+   setChecked(item.subscribed);
+   updater(item);
+}
 }
 
 const Alert = styled(Card)`

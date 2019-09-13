@@ -1,7 +1,7 @@
 import React from "react";
 import { userCollection, appSettingsCollection } from "../stitch";
 
-const dataReducer = (state, { type, payload }) => {
+const userReducer = (state, { type, payload }) => {
   switch (type) {
     case "setUser": {
       return {
@@ -29,37 +29,26 @@ const dataReducer = (state, { type, payload }) => {
 }
 
 export function getUser(userId) {
-  const [state, dispatch] = React.useReducer(dataReducer, { user: {} });
-  getSettings();
-
+  const [state, dispatch] = React.useReducer(userReducer, { user: {} });
+  
   const loadUser = async () => {
+    
+    console.log('fetching from Stitch')
     await userCollection.findOne({"oauth_id":userId}).then(async user=>{
       dispatch({ type: "setUser", payload: { user } });
     });
-  };
-
-  const toggleAlertStatus = async alertId => {
-    /*const todo = state.alerts.find(t => t._id === alert._id);
-    await items.updateOne(
-      { _id: todoId },
-      { $set: { checked: !todo.currentStatus } },
-    );
-    dispatch({ type: "toggleTodoStatus", payload: { id: todoId } });*/
   };
 
   React.useEffect(() => {
     loadUser(); 
   }, []);
   return {
-    user: state.user,
-    actions: {
-      toggleAlertStatus
-    }
+    user: state.user
   };
 }
 
 export function getSettings() {
-  const [state, dispatch] = React.useReducer(dataReducer, { appSettings: {} });
+  const [state, dispatch] = React.useReducer(userReducer, { appSettings: {} });
 
   const loadSettings = async () => {
     await appSettingsCollection.findOne({}).then(async appSettings => {

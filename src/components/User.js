@@ -6,28 +6,31 @@ import Button from 'react-bootstrap/Button';
 
 User.propTypes = {
   user: PropTypes.object,
-  appSettings: PropTypes.object,
-  actions: PropTypes.object
+  updater: PropTypes.func
 };
 
 export default function User(props) {
-  console.log('props', props)
-  if (props == undefined) return( <Layout>
+  
+  if (props == undefined) return(<Layout>
     <h1>loading...</h1>
     <h2></h2>
-</Layout>);
-  
-  const { user, appSettings, actions } = props;
+    </Layout>);
 
-  if (user == {} || user.user == undefined) {
-    console.log('again?', user.user)
+  const {user} = props;
+  const onClick = props.updater;
+const alertUpdater = ()=>updateAlertSettings();
+
+  console.log('User.js user', user, onClick)
+
+  if (user._id == undefined) {
+    console.log('again?', user)
     return (<Layout>
         <h1>loading...</h1>
         <h2></h2>
     </Layout>);
   }
 
-  let children = user.user.children.map((item, key) =>
+  let children = user.children.map((item, key) =>
     <li key={key}>{item.name} (grade {item.grade})</li>
   );
 
@@ -43,14 +46,19 @@ export default function User(props) {
       </p>
 
       I would like to receive text messages for:
-      <AlertsList {... props}/>
-      <Button variant="outline-primary" onClick={()=>submitChanges()}>Save my Preferences</Button>
+      <AlertsList updateAlerts={()=>alertUpdater(alert)} {... props}/>
+      <Button variant="outline-primary" onClick={()=>onClick(user)}>Save my Preferences</Button>
   </Layout>)
 
-function submitChanges(){
-  console.log('onclick',user)
+function updateAlertSettings(alert){
+  console.log('***updateAlertSettings', user);
+  console.log(user.alerts, alert);
+  onClick(user);
+  //TODO: persist to Stitch
 }
 }
+
+
 
 const Layout = styled.div`
   background: #eeeeee;
