@@ -13,10 +13,10 @@ AlertApp.propTypes = {};
 
 export default function AlertApp() { 
   const currentUser = useStitchAuth().currentUser;
-  const {user} = getUser(currentUser.id);
+  const {user, actions} = getUser(currentUser.id);
   const {appSettings} = getSettings();
   
-  let bucket = {user, appSettings};
+  let bucket = {user, appSettings, actions};
   console.log('alertapp BUCKET', bucket)
   let newUser = (bucket.user._id != undefined)
 
