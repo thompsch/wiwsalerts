@@ -1,0 +1,35 @@
+{
+    "name": "oauth2-google",
+    "type": "oauth2-google",
+    "config": {
+        "clientId": "409769697228-cushika251uh9bbfc60p9gnvs2vajgbl.apps.googleusercontent.com"
+    },
+    "secret_config": {
+        "clientSecret": "borkbork"
+    },
+    "disabled": false,
+    "metadata_fields": [
+        {
+            "required": false,
+            "name": "name"
+        },
+        {
+            "required": false,
+            "name": "first_name"
+        },
+        {
+            "required": false,
+            "name": "last_name"
+        },
+        {
+            "required": false,
+            "name": "email"
+        }
+    ],
+    "redirect_uris": [
+        "https://localhost:3000/",
+        "https://tafnp.herokuapp.com/",
+        "http://localhost:3000/",
+        "https://wiwsalertservice-mpudr.mongodbstitch.com/"
+    ]
+}

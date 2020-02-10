@@ -1,0 +1,11 @@
+{
+    "name": "Send",
+    "type": "twilio",
+    "config": {
+        "sid": "AC0861a05609d60e8fd02d84bc95a3620c"
+    },
+    "secret_config": {
+        "auth_token": "cht"
+    },
+    "version": 1
+}
