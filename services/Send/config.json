@@ -5,7 +5,7 @@
         "sid": "AC0861a05609d60e8fd02d84bc95a3620c"
     },
     "secret_config": {
-        "auth_token": "cht"
+        "auth_token": "twilio_send"
     },
     "version": 1
 }
