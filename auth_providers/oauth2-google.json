@@ -1,12 +1,6 @@
 {
     "name": "oauth2-google",
     "type": "oauth2-google",
-    "config": {
-        "clientId": "409769697228-cushika251uh9bbfc60p9gnvs2vajgbl.apps.googleusercontent.com"
-    },
-    "secret_config": {
-        "clientSecret": "borkbork"
-    },
     "disabled": false,
     "metadata_fields": [
         {

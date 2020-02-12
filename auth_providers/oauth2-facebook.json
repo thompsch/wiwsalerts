@@ -1,12 +1,6 @@
 {
     "name": "oauth2-facebook",
     "type": "oauth2-facebook",
-    "config": {
-        "clientId": "512966842585149"
-    },
-    "secret_config": {
-        "clientSecret": "fa0ea5a0f584315f9a203fab317398e1"
-    },
     "disabled": false,
     "metadata_fields": [
         {
