@@ -1,6 +1,12 @@
 {
     "name": "oauth2-facebook",
     "type": "oauth2-facebook",
+    "config": {
+        "clientId": "512966842585149"
+    },
+    "secret_config": {
+        "clientSecret": "borkbork"
+    },
     "disabled": false,
     "metadata_fields": [
         {
