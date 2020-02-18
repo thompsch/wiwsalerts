@@ -23,7 +23,8 @@
     "react-error-boundary": "1.2.3",
     "react-leaflet": "2.2.1",
     "react-scripts": "2.1.8",
-    "reactstrap": "7.1.0"
+    "reactstrap": "7.1.0",
+    "twilio": "^3.39.4"
   },
   "devDependencies": {
     "typescript": "3.3.3"
