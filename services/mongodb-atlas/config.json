@@ -1,7 +1,9 @@
 {
+    "id": "5e41a5177fc9aa70d9adc657",
     "name": "mongodb-atlas",
     "type": "mongodb-atlas",
     "config": {
+        "clusterName": "WIWS",
         "readPreference": "primary",
         "wireProtocolEnabled": false
     },

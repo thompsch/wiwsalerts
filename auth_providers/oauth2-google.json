@@ -1,11 +1,12 @@
 {
+    "id": "5e44795ffdccff1d7ee29aa3",
     "name": "oauth2-google",
     "type": "oauth2-google",
     "config": {
-        "clientId": "409769697228-cushika251uh9bbfc60p9gnvs2vajgbl.apps.googleusercontent.com"
+        "clientId": "585199806416-3sg4ijsmcm1cfdh3flat76ksfm0b7p34.apps.googleusercontent.com"
     },
     "secret_config": {
-        "clientSecret": "borkbork"
+        "clientSecret": "google_sefret"
     },
     "disabled": false,
     "metadata_fields": [
@@ -30,6 +31,6 @@
         "https://localhost:3000/",
         "https://tafnp.herokuapp.com/",
         "http://localhost:3000/",
-        "https://wiwsalertservice-mpudr.mongodbstitch.com/"
+        "https://wiwsalerts-yvogf.mongodbstitch.com/"
     ]
 }

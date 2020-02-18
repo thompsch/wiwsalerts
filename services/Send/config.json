@@ -1,11 +1,12 @@
 {
+    "id": "5e447c5dcaaaab2544cc9c16",
     "name": "Send",
     "type": "twilio",
     "config": {
-        "sid": "AC0861a05609d60e8fd02d84bc95a3620c"
+        "sid": "AC5cf4018e80e3e352a7086d6b668d0cf4"
     },
     "secret_config": {
-        "auth_token": "twilio_send"
+        "auth_token": "new"
     },
     "version": 1
 }
